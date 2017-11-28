@@ -97,19 +97,19 @@ class ElasticClient {
     }
 
     def insertIntoIndexSync(def content) {
-        restClient.postSync(url + indexName + '/' + DOC, content)
+        restClient.postSync(url + indexName + '/' + DOC, content, String)
     }
 
     def insertIntoIndexAsync(def content) {
-        restClient.postAsync(url + indexName + '/' + DOC, content)
+        restClient.postAsync(url + indexName + '/' + DOC, content, String)
     }
 
     def updateIndexSync(def content, String id) {
-        restClient.putSync(url + DOC + '/' + id, content)
+        restClient.putSync(url + DOC + '/' + id, content, String)
     }
 
     def updateIndexAsync(def content, String id) {
-        restClient.putAsync(url + DOC + '/' + id, content)
+        restClient.putAsync(url + DOC + '/' + id, content, String)
     }
 
     Boolean deleteDocumentByIdSync(String id) {
@@ -121,11 +121,11 @@ class ElasticClient {
     }
 
     def reindexSync(String destination) {
-        restClient.postSync(url + '_reindex', createReindexRequest(destination))
+        restClient.postSync(url + '_reindex', createReindexRequest(destination), String)
     }
 
     def reindexAsync(String destination) {
-        restClient.postAsync(url + '_reindex', createReindexRequest(destination))
+        restClient.postAsync(url + '_reindex', createReindexRequest(destination), String)
     }
 
     private ReindexRequest createReindexRequest(String destination) {

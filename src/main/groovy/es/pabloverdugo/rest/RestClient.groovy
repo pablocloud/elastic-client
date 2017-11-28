@@ -45,7 +45,7 @@ class RestClient extends Unirest {
         response
     }
 
-    def postAsync(String url, def t, Class responseClass) {
+    def static postAsync(String url, def t, Class responseClass) {
         def jsonBody = mapper.writeValueAsString(t)
         post(url)
                 .header('Content-Type', 'application/json')
@@ -54,7 +54,6 @@ class RestClient extends Unirest {
             @Override
             void completed(HttpResponse<String> httpResponse) {
                 logger.info(httpResponse.body)
-                result = mapper.readValue(httpResponse.body, responseClass)
             }
 
             @Override
