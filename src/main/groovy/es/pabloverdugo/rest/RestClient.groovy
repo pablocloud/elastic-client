@@ -32,9 +32,8 @@ class RestClient extends Unirest {
         def response = post(url)
                 .header('Content-Type', 'application/json')
                 .body(jsonBody).asString().body
-        def value = mapper.readValue(response, responseClass)
         logger.info(response)
-        value
+        response
     }
 
     def static postSyncNoMapper(String url, def t) {
